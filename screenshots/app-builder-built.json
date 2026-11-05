@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Service Wall — tiny house plumbing, power, and heat",
+      "hasCanvas": false,
+      "bodyTextLen": 3715,
+      "bodyTextHash": "0e6dae963a6a8bc55db40b2b5c6e962f84ca997d75621d1c12ae7da279cbe055",
+      "bodyTextPrefix": "Service Wall Guide Water Power Heat Size FIELD GUIDE Put water, ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Service Wall — tiny house plumbing, power, and heat",
+      "hasCanvas": false,
+      "bodyTextLen": 3715,
+      "bodyTextHash": "12f1be40a1053713f93ec3b0c728414a78622949a0605d06abfb201c196b50d9",
+      "bodyTextPrefix": "Service Wall FIELD GUIDE Put water, power, and heat on one wall.",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}

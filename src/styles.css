@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f3efe6;
+  --color-paper-deep: #e6dfd2;
+  --color-card: #faf7f1;
+  --color-ink: #1c1915;
+  --color-muted: #5c564e;
+  --color-copper: #b4532a;
+  --color-copper-ink: #7c2d12;
+  --color-pine: #1f4a40;
+  --color-line: #ddd4c6;
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Figtree", system-ui, sans-serif;
+  --radius-card: 1.25rem;
+  --shadow-card: 0px 0px 0px 1px rgba(28, 25, 21, 0.07),
+    0px 1px 2px -1px rgba(28, 25, 21, 0.06),
+    0px 10px 24px -16px rgba(28, 25, 21, 0.28);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    color-scheme: light;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-paper);
+    color: var(--color-ink);
+    min-height: 100vh;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-copper);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .tap {
+    transition: scale 150ms ease-out;
+  }
+
+  .tap:active:not(:disabled) {
+    scale: 0.96;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.rise {
+  animation: rise 520ms ease-out both;
+}
+
+.rise-2 {
+  animation-delay: 90ms;
+}
+
+.rise-3 {
+  animation-delay: 180ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .rise-2,
+  .rise-3 {
+    animation: none;
+  }
+}

@@ -1,0 +1,287 @@
+import { S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
+import { a as Droplets, i as Flame, s as ArrowRight, t as Zap } from "../_libs/lucide-react.mjs";
+import { a as buildOrder, c as stepsFor, i as cn, l as systemOrder, o as collisions, r as useGuideStore, u as systems } from "./router-NB6mE9bN.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-XO6vbdhD.js
+var import_jsx_runtime = require_jsx_runtime();
+var zones = [
+	{
+		title: "Plumbing vent",
+		note: "Through the roof, alone",
+		system: "plumbing",
+		hash: "p-vent"
+	},
+	{
+		title: "Heater exhaust",
+		note: "Not the same hole",
+		system: "heat",
+		hash: "h-place"
+	},
+	{
+		title: "Panel",
+		note: "Room to stand in front",
+		system: "electric",
+		hash: "e-panel"
+	},
+	{
+		title: "Water heater",
+		note: "Fuel, or a small tank",
+		system: "plumbing",
+		hash: "p-fixtures"
+	},
+	{
+		title: "Pump hatch",
+		note: "Valves you can reach",
+		system: "plumbing",
+		hash: "p-hatch"
+	},
+	{
+		title: "Shower valve",
+		note: "Interior wall, not the skin",
+		system: "plumbing",
+		hash: "p-wall"
+	}
+];
+function ServiceWallDiagram() {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("figure", {
+		className: "shadow-card rounded-card bg-card p-4 sm:p-5",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-baseline justify-between gap-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("figcaption", {
+					className: "font-display text-2xl text-ink",
+					children: "The service wall"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-xs tracking-widest text-muted uppercase",
+					children: "Not to scale"
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "mt-4 grid grid-cols-2 gap-2",
+				children: zones.map((zone) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+					to: "/systems/$system",
+					params: { system: zone.system },
+					hash: zone.hash,
+					className: "tap flex min-h-20 flex-col justify-between rounded-xl bg-paper px-3 py-3 transition-colors duration-200 hover:bg-paper-deep",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-sm font-semibold text-ink",
+						children: zone.title
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-xs leading-snug text-muted",
+						children: zone.note
+					})]
+				}, zone.hash))
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "mt-2 rounded-xl border border-dashed border-line bg-paper px-3 py-3",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+					to: "/systems/$system",
+					params: { system: "plumbing" },
+					hash: "p-tanks",
+					className: "flex items-baseline justify-between gap-3",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-sm font-semibold",
+						children: "Belly · tanks between the axles"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-xs text-copper-ink",
+						children: "Fresh, grey, black"
+					})]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-3 text-sm leading-relaxed text-muted",
+				children: "One chase near mid-trailer. Water on the wall, the panel beside it, heat exhausted on its own path, weight low and centered."
+			})
+		]
+	});
+}
+var icons = {
+	plumbing: Droplets,
+	electric: Zap,
+	heat: Flame
+};
+function HomeView() {
+	const done = useGuideStore((state) => state.done);
+	const toggle = useGuideStore((state) => state.toggle);
+	const resetChecks = useGuideStore((state) => state.resetChecks);
+	const buildDone = buildOrder.filter((item) => done[item.id]).length;
+	const anyDone = Object.values(done).some(Boolean);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+			className: "mx-auto grid max-w-6xl gap-10 px-5 pt-10 pb-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end lg:pt-16",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "rise text-sm font-semibold tracking-widest text-copper-ink uppercase",
+					children: "Field guide"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+					className: "rise rise-2 mt-3 font-display text-4xl leading-tight text-ink sm:text-6xl",
+					children: "Put water, power, and heat on one wall."
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "rise rise-3 mt-5 max-w-xl text-lg leading-relaxed text-ink",
+					children: "A tiny house goes together around that wall. This is the rough-in order, the mistakes that rot a trailer, and a planner that sizes the tank, the cord, and the heater to your floor plan."
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "rise rise-3 mt-7 flex flex-wrap gap-3",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+						to: "/planner",
+						className: "tap inline-flex min-h-11 items-center gap-2 rounded-full bg-copper px-5 text-sm font-semibold text-paper transition-colors duration-200 hover:bg-copper-ink",
+						children: ["Size the systems", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
+							className: "size-4",
+							"aria-hidden": true
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+						to: "/systems/$system",
+						params: { system: "plumbing" },
+						className: "tap inline-flex min-h-11 items-center rounded-full bg-card px-5 text-sm font-semibold text-ink shadow-card",
+						children: "Start with water"
+					})]
+				})
+			] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "rise rise-3",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ServiceWallDiagram, {})
+			})]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+			className: "mx-auto max-w-6xl px-5 py-8",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "grid gap-3 md:grid-cols-3",
+				children: systemOrder.map((id) => {
+					const system = systems[id];
+					const Icon = icons[id];
+					const steps = stepsFor(id);
+					const complete = steps.filter((step) => done[step.id]).length;
+					const ratio = complete / steps.length;
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+						to: "/systems/$system",
+						params: { system: id },
+						className: "tap shadow-card flex min-h-44 flex-col rounded-card bg-card p-5 transition-shadow duration-200",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-between gap-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, {
+									className: "size-5 text-copper-ink",
+									"aria-hidden": true
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "text-sm tabular-nums text-muted",
+									children: [
+										complete,
+										"/",
+										steps.length
+									]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+								className: "mt-6 font-display text-3xl text-ink",
+								children: system.name
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-2 text-sm leading-relaxed text-muted",
+								children: system.promise
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "mt-5 h-1 overflow-hidden rounded-full bg-paper-deep",
+								"aria-hidden": true,
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "h-full bg-copper",
+									style: { width: `${ratio * 100}%` }
+								})
+							})
+						]
+					}, id);
+				})
+			})
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+			className: "mx-auto max-w-6xl px-5 py-8",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "max-w-2xl",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+					className: "font-display text-3xl text-ink sm:text-4xl",
+					children: "Where the three collide"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-3 text-base leading-relaxed text-muted",
+					children: "Most failures are not mysterious. They are two trades asked to share a hole, a closet, or a cold belly."
+				})]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
+				className: "mt-6 divide-y divide-line border-y border-line",
+				children: collisions.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+					to: "/systems/$system",
+					params: { system: item.system },
+					hash: item.hash,
+					className: "grid gap-2 py-5 transition-colors duration-200 hover:bg-paper-deep/70 sm:grid-cols-[4rem_minmax(0,1fr)] sm:gap-6 sm:px-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "font-display text-xl text-copper tabular-nums",
+						children: String(index + 1).padStart(2, "0")
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "block font-display text-2xl text-ink",
+						children: item.title
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "mt-1 block text-sm leading-relaxed text-muted",
+						children: item.body
+					})] })]
+				}) }, item.title))
+			})]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+			className: "mx-auto max-w-6xl px-5 py-8",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap items-end justify-between gap-4",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+					className: "font-display text-3xl text-ink sm:text-4xl",
+					children: "Build order"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+					className: "mt-2 text-sm tabular-nums text-muted",
+					children: [
+						buildDone,
+						" of ",
+						buildOrder.length,
+						" marked"
+					]
+				})] }), anyDone ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					onClick: resetChecks,
+					className: "tap min-h-11 rounded-full px-3 text-sm font-medium text-copper-ink",
+					children: "Clear all checks"
+				}) : null]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
+				className: "mt-6 grid gap-3 md:grid-cols-2",
+				children: buildOrder.map((item, index) => {
+					const checked = !!done[item.id];
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+						className: cn("shadow-card flex min-h-24 cursor-pointer gap-4 rounded-card bg-card p-4 transition-colors duration-200", checked && "bg-paper-deep"),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							type: "checkbox",
+							checked,
+							onChange: () => toggle(item.id),
+							className: "mt-1 size-5 shrink-0 accent-pine"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "block text-xs font-semibold tracking-widest text-copper-ink uppercase tabular-nums",
+								children: ["Step ", index + 1]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "mt-1 block font-medium text-ink",
+								children: item.title
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "mt-1 block text-sm leading-relaxed text-muted",
+								children: item.detail
+							})
+						] })]
+					}) }, item.id);
+				})
+			})]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+			className: "mx-auto max-w-6xl px-5 py-6",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "max-w-2xl text-sm leading-relaxed text-muted",
+				children: "Structure, the trailer itself, and finishes sit outside this book. The systems fail in predictable ways. Those are the pages."
+			})
+		})
+	] });
+}
+var SplitComponent = HomeView;
+//#endregion
+export { SplitComponent as component };
