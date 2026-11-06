@@ -4,6 +4,6 @@ import { HomeView } from "@/components/home-view";
 export const Route = createFileRoute("/")({
   component: HomeView,
   head: () => ({
-    meta: [{ title: "Service Wall — tiny house plumbing, power, and heat" }],
+    meta: [{ title: "Tiny Houses: Service Wall — plumbing, power, and heat" }],
   }),
 });

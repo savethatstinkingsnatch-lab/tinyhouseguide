@@ -1,11 +1,11 @@
 import { i as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, _ as lazyRouteComponent, b as Link, d as Scripts, f as HeadContent, g as Outlet, h as createRouter, p as useRouterState, v as createFileRoute, x as useRouter, y as createRootRoute } from "../_libs/@tanstack/react-router+[...].mjs";
-import { a as Droplets, i as Flame, n as TriangleAlert, o as BookOpen, r as Ruler, t as Zap } from "../_libs/lucide-react.mjs";
+import { a as Flame, i as ListChecks, n as TriangleAlert, o as Droplets, r as Ruler, s as BookOpen, t as Zap } from "../_libs/lucide-react.mjs";
 import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
 import { t as clsx } from "../_libs/clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
 import { n as create, t as persist } from "../_libs/zustand.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/guide-data-HpaFLedo.js
+//#region node_modules/.nitro/vite/services/ssr/assets/guide-data-CPpMlawG.js
 var systems = {
 	plumbing: {
 		id: "plumbing",
@@ -40,7 +40,7 @@ var systems = {
 					{
 						id: "p-source",
 						title: "Pick tanks or a hose before the floor is framed",
-						body: "Onboard water means a fresh tank, a 12-volt pump, and a grey tank. A city hookup means a hose bibb with a regulator set around 45 to 50 psi — park pressure can sit over 80 — and a legal place to send grey water. The ground is not that place in most towns.",
+						body: "Onboard water means a fresh tank, a 12-volt pump, and a grey tank. A city hookup means a hose bibb with a regulator set around 45 to 50 psi — park pressure can sit over 80 — and a legal place to send grey water. The ground is not that place in most towns. Connect only to a legal sewer, septic, or approved dump station. Do not dig a DIY 'leach pit' unless the health department has approved it in writing. Composting toilets still have rules for emptying solids.",
 						why: "Floor joists have to leave a bay for the tanks. Cutting a structural member later to slide a tank in is how tiny houses get soft in the middle.",
 						watch: "Put a check valve at the city inlet so a pump cannot backfeed a park system. And do not size the tank for a house you will never fill. Water weighs 8.3 pounds a gallon."
 					},
@@ -209,7 +209,7 @@ var systems = {
 						title: "Bond the frame, and do not bond the neutral twice",
 						body: "Scrape paint and put a listed lug from the ground bar to the trailer frame. If a park pedestal feeds your inlet, the panel is a subpanel: neutral and ground stay separate. Do not land neutral on the frame. If you are the service — a foundation house with a meter — neutral and ground bond at the main disconnect, and only there.",
 						why: "A bootleg neutral-to-frame bond puts return current on the metal you touch. A missing bond means a fault has nowhere to trip the breaker.",
-						watch: "This is the hour worth paying an electrician if you are unsure. The rest of the rough-in is repetitive. This part is the part that hurts people."
+						watch: "This is the hour worth paying an electrician if you are unsure. The rest of the rough-in is repetitive. This part is the part that hurts people. Gas lines, propane appliances, and the electrical service often require a licensed person where you live. Hire them for the parts that can burn the house or kill you. DIY is not a waiver."
 					}
 				]
 			},
@@ -489,7 +489,7 @@ function stepsFor(id) {
 	return systems[id].phases.flatMap((phase) => phase.steps);
 }
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-NB6mE9bN.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-nHdU61Fg.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -862,6 +862,12 @@ var useGuideStore = create()(persist((set) => ({
 }));
 var links = [
 	{
+		to: "/start",
+		label: "Start",
+		icon: ListChecks,
+		exact: true
+	},
+	{
 		to: "/",
 		label: "Guide",
 		icon: BookOpen,
@@ -905,8 +911,8 @@ function Shell({ children }) {
 					className: "mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
 						to: "/",
-						className: "font-display text-xl font-medium tracking-tight text-ink",
-						children: "Service Wall"
+						className: "font-display text-lg font-medium tracking-tight text-ink sm:text-xl",
+						children: "Tiny Houses: Service Wall"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
 						className: "hidden items-center gap-1 md:flex",
 						"aria-label": "Sections",
@@ -923,21 +929,18 @@ function Shell({ children }) {
 				})
 			}),
 			children,
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("footer", {
 				className: "mx-auto max-w-6xl px-5 py-12",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "max-w-3xl text-sm leading-relaxed text-muted",
-					children: "A planning guide, not a permit and not a code book. Trailer houses are often reviewed as RVs. Houses on a foundation are dwellings, with different rules for the service, AFCI, and energy. Gas work, the electrical service, and structure may require a license where you live. Your inspector’s reading wins."
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "mt-4 text-sm text-muted",
-					children: "Service Wall · plumbing, power, and heat"
-				})]
+					children: "A planning guide, not a permit and not a code book. Trailer houses are often reviewed as RVs. Houses on a foundation are dwellings, with different rules for the service, AFCI, and energy. Gas work, the electrical service, and structure may require a license where you live. Your inspector’s reading wins. Blue and the Awesome Dudes are not responsible for fines, failed inspections, fire, carbon monoxide, water damage, or injury. Part of The Education Revolution pocket guide series. Privacy: This guide does not collect your name, email, or any personal information. Your checklist marks are saved only on your own device."
+				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
 				className: "fixed inset-x-0 bottom-0 z-30 border-t border-line bg-paper/95 backdrop-blur-md md:hidden",
 				"aria-label": "Sections",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
-					className: "grid grid-cols-5",
+					className: "grid grid-cols-6",
 					children: links.map((link) => {
 						const Icon = link.icon;
 						const href = "params" in link ? `/systems/${link.params.system}` : link.to;
@@ -957,9 +960,9 @@ function Shell({ children }) {
 		]
 	});
 }
-var styles_default = "/assets/styles-Dbi7JNeH.css";
-var APP_NAME = "Service Wall";
-var Route$3 = createRootRoute({
+var styles_default = "/assets/styles-CCyfttaB.css";
+var APP_NAME = "Tiny Houses: Service Wall";
+var Route$8 = createRootRoute({
 	head: () => ({
 		meta: [
 			{ charSet: "utf-8" },
@@ -1020,39 +1023,89 @@ var Route$3 = createRootRoute({
 		] })]
 	})
 });
-var $$splitComponentImporter$2 = () => import("./routes-XO6vbdhD.mjs");
-var Route$2 = createFileRoute("/")({
+var $$splitComponentImporter$7 = () => import("./routes-BVjeypiv.mjs");
+var Route$7 = createFileRoute("/")({
+	component: lazyRouteComponent($$splitComponentImporter$7, "component"),
+	head: () => ({ meta: [{ title: "Tiny Houses: Service Wall — plumbing, power, and heat" }] })
+});
+var $$splitComponentImporter$6 = () => import("./before-DlR4-RZh.mjs");
+var Route$6 = createFileRoute("/before")({
+	component: lazyRouteComponent($$splitComponentImporter$6, "component"),
+	head: () => ({ meta: [{ title: "Before you build — Tiny Houses: Service Wall" }] })
+});
+var $$splitComponentImporter$5 = () => import("./egress-CJC2qSbS.mjs");
+var Route$5 = createFileRoute("/egress")({
+	component: lazyRouteComponent($$splitComponentImporter$5, "component"),
+	head: () => ({ meta: [{ title: "Egress and fire — Tiny Houses: Service Wall" }] })
+});
+var $$splitComponentImporter$4 = () => import("./glossary-fRJDoa-X.mjs");
+var Route$4 = createFileRoute("/glossary")({
+	component: lazyRouteComponent($$splitComponentImporter$4, "component"),
+	head: () => ({ meta: [{ title: "Glossary — Tiny Houses: Service Wall" }] })
+});
+var $$splitComponentImporter$3 = () => import("./planner-CS9diDi8.mjs");
+var Route$3 = createFileRoute("/planner")({
+	component: lazyRouteComponent($$splitComponentImporter$3, "component"),
+	head: () => ({ meta: [{ title: "Size the systems — Tiny Houses: Service Wall" }] })
+});
+var $$splitComponentImporter$2 = () => import("./start-Xs9NX7s1.mjs");
+var Route$2 = createFileRoute("/start")({
 	component: lazyRouteComponent($$splitComponentImporter$2, "component"),
-	head: () => ({ meta: [{ title: "Service Wall — tiny house plumbing, power, and heat" }] })
+	head: () => ({ meta: [{ title: "Start here — Tiny Houses: Service Wall" }] })
 });
-var $$splitComponentImporter$1 = () => import("./planner-BB7tKAfg.mjs");
-var Route$1 = createFileRoute("/planner")({
+var $$splitComponentImporter$1 = () => import("./trailer-XkpcidUq.mjs");
+var Route$1 = createFileRoute("/trailer")({
 	component: lazyRouteComponent($$splitComponentImporter$1, "component"),
-	head: () => ({ meta: [{ title: "Size the systems — Service Wall" }] })
+	head: () => ({ meta: [{ title: "Trailer, weight, and towing — Tiny Houses: Service Wall" }] })
 });
-var $$splitComponentImporter = () => import("./systems._system-Cc5ymxRH.mjs");
+var $$splitComponentImporter = () => import("./systems._system-DZkpDWtS.mjs");
 var Route = createFileRoute("/systems/$system")({
 	component: lazyRouteComponent($$splitComponentImporter, "component"),
-	head: ({ params }) => ({ meta: [{ title: isSystemId(params.system) ? `${systems[params.system].name} — Service Wall` : "Service Wall" }] })
+	head: ({ params }) => ({ meta: [{ title: isSystemId(params.system) ? `${systems[params.system].name} — Tiny Houses: Service Wall` : "Tiny Houses: Service Wall" }] })
 });
 var rootRouteChildren = {
-	IndexRoute: Route$2.update({
+	IndexRoute: Route$7.update({
 		id: "/",
 		path: "/",
-		getParentRoute: () => Route$3
+		getParentRoute: () => Route$8
 	}),
-	PlannerRoute: Route$1.update({
+	BeforeRoute: Route$6.update({
+		id: "/before",
+		path: "/before",
+		getParentRoute: () => Route$8
+	}),
+	EgressRoute: Route$5.update({
+		id: "/egress",
+		path: "/egress",
+		getParentRoute: () => Route$8
+	}),
+	GlossaryRoute: Route$4.update({
+		id: "/glossary",
+		path: "/glossary",
+		getParentRoute: () => Route$8
+	}),
+	PlannerRoute: Route$3.update({
 		id: "/planner",
 		path: "/planner",
-		getParentRoute: () => Route$3
+		getParentRoute: () => Route$8
+	}),
+	StartRoute: Route$2.update({
+		id: "/start",
+		path: "/start",
+		getParentRoute: () => Route$8
+	}),
+	TrailerRoute: Route$1.update({
+		id: "/trailer",
+		path: "/trailer",
+		getParentRoute: () => Route$8
 	}),
 	SystemsSystemRoute: Route.update({
 		id: "/systems/$system",
 		path: "/systems/$system",
-		getParentRoute: () => Route$3
+		getParentRoute: () => Route$8
 	})
 };
-var routeTree = Route$3._addFileChildren(rootRouteChildren)._addFileTypes();
+var routeTree = Route$8._addFileChildren(rootRouteChildren)._addFileTypes();
 var router_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
 function getRouter() {
 	return createRouter({

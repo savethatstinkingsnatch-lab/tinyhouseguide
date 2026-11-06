@@ -8,8 +8,8 @@ export const Route = createFileRoute("/systems/$system")({
     meta: [
       {
         title: isSystemId(params.system)
-          ? `${systems[params.system].name} — Service Wall`
-          : "Service Wall",
+          ? `${systems[params.system].name} — Tiny Houses: Service Wall`
+          : "Tiny Houses: Service Wall",
       },
     ],
   }),

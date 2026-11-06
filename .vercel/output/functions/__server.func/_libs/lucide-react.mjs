@@ -131,6 +131,34 @@ var Flame = createLucideIcon("flame", [["path", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var ListChecks = createLucideIcon("list-checks", [
+	["path", {
+		d: "m3 17 2 2 4-4",
+		key: "1jhpwq"
+	}],
+	["path", {
+		d: "m3 7 2 2 4-4",
+		key: "1obspn"
+	}],
+	["path", {
+		d: "M13 6h8",
+		key: "15sg57"
+	}],
+	["path", {
+		d: "M13 12h8",
+		key: "h98zly"
+	}],
+	["path", {
+		d: "M13 18h8",
+		key: "oe0vm4"
+	}]
+]);
+/**
+* @license lucide-react v0.510.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var Ruler = createLucideIcon("ruler", [
 	["path", {
 		d: "M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z",
@@ -184,4 +212,4 @@ var Zap = createLucideIcon("zap", [["path", {
 	key: "1xq2db"
 }]]);
 //#endregion
-export { Droplets as a, Flame as i, TriangleAlert as n, BookOpen as o, Ruler as r, ArrowRight as s, Zap as t };
+export { Flame as a, ArrowRight as c, ListChecks as i, TriangleAlert as n, Droplets as o, Ruler as r, BookOpen as s, Zap as t };

@@ -61,7 +61,7 @@ export const systems: Record<SystemId, SystemGuide> = {
           {
             id: "p-source",
             title: "Pick tanks or a hose before the floor is framed",
-            body: "Onboard water means a fresh tank, a 12-volt pump, and a grey tank. A city hookup means a hose bibb with a regulator set around 45 to 50 psi — park pressure can sit over 80 — and a legal place to send grey water. The ground is not that place in most towns.",
+            body: "Onboard water means a fresh tank, a 12-volt pump, and a grey tank. A city hookup means a hose bibb with a regulator set around 45 to 50 psi — park pressure can sit over 80 — and a legal place to send grey water. The ground is not that place in most towns. Connect only to a legal sewer, septic, or approved dump station. Do not dig a DIY 'leach pit' unless the health department has approved it in writing. Composting toilets still have rules for emptying solids.",
             why: "Floor joists have to leave a bay for the tanks. Cutting a structural member later to slide a tank in is how tiny houses get soft in the middle.",
             watch: "Put a check valve at the city inlet so a pump cannot backfeed a park system. And do not size the tank for a house you will never fill. Water weighs 8.3 pounds a gallon.",
           },
@@ -231,7 +231,7 @@ export const systems: Record<SystemId, SystemGuide> = {
             title: "Bond the frame, and do not bond the neutral twice",
             body: "Scrape paint and put a listed lug from the ground bar to the trailer frame. If a park pedestal feeds your inlet, the panel is a subpanel: neutral and ground stay separate. Do not land neutral on the frame. If you are the service — a foundation house with a meter — neutral and ground bond at the main disconnect, and only there.",
             why: "A bootleg neutral-to-frame bond puts return current on the metal you touch. A missing bond means a fault has nowhere to trip the breaker.",
-            watch: "This is the hour worth paying an electrician if you are unsure. The rest of the rough-in is repetitive. This part is the part that hurts people.",
+            watch: "This is the hour worth paying an electrician if you are unsure. The rest of the rough-in is repetitive. This part is the part that hurts people. Gas lines, propane appliances, and the electrical service often require a licensed person where you live. Hire them for the parts that can burn the house or kill you. DIY is not a waiver.",
           },
         ],
       },

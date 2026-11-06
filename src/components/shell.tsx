@@ -1,10 +1,11 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { BookOpen, Droplets, Flame, Ruler, Zap } from "lucide-react";
+import { BookOpen, Droplets, Flame, ListChecks, Ruler, Zap } from "lucide-react";
 import { useEffect } from "react";
 import { cn } from "@/lib/cn";
 import { useGuideStore } from "@/lib/store";
 
 const links = [
+  { to: "/start", label: "Start", icon: ListChecks, exact: true },
   { to: "/", label: "Guide", icon: BookOpen, exact: true },
   { to: "/systems/$system", params: { system: "plumbing" }, label: "Water", icon: Droplets },
   { to: "/systems/$system", params: { system: "electric" }, label: "Power", icon: Zap },
@@ -23,8 +24,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen pb-24 md:pb-0">
       <header className="sticky top-0 z-30 border-b border-line bg-paper/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
-          <Link to="/" className="font-display text-xl font-medium tracking-tight text-ink">
-            Service Wall
+          <Link to="/" className="font-display text-lg font-medium tracking-tight text-ink sm:text-xl">
+            Tiny Houses: Service Wall
           </Link>
           <nav className="hidden items-center gap-1 md:flex" aria-label="Sections">
             {links.map((link) => (
@@ -49,15 +50,18 @@ export function Shell({ children }: { children: React.ReactNode }) {
           A planning guide, not a permit and not a code book. Trailer houses are often
           reviewed as RVs. Houses on a foundation are dwellings, with different rules for
           the service, AFCI, and energy. Gas work, the electrical service, and structure
-          may require a license where you live. Your inspector’s reading wins.
+          may require a license where you live. Your inspector’s reading wins. Blue and
+          the Awesome Dudes are not responsible for fines, failed inspections, fire,
+          carbon monoxide, water damage, or injury. Part of The Education Revolution
+          pocket guide series. Privacy: This guide does not collect your name, email, or
+          any personal information. Your checklist marks are saved only on your own device.
         </p>
-        <p className="mt-4 text-sm text-muted">Service Wall · plumbing, power, and heat</p>
       </footer>
       <nav
         className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-paper/95 backdrop-blur-md md:hidden"
         aria-label="Sections"
       >
-        <ul className="grid grid-cols-5">
+        <ul className="grid grid-cols-6">
           {links.map((link) => {
             const Icon = link.icon;
             const href =

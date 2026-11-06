@@ -24,6 +24,10 @@ export function HomeView() {
           <h1 className="rise rise-2 mt-3 font-display text-4xl leading-tight text-ink sm:text-6xl">
             Put water, power, and heat on one wall.
           </h1>
+          <p className="rise rise-3 mt-4 max-w-xl font-display text-xl leading-snug text-ink">
+            The Education Revolution Pocket Guide, Volume 24: Tiny Houses
+          </p>
+          <p className="rise rise-3 mt-1 text-sm text-muted">by Blue and the Awesome Dudes</p>
           <p className="rise rise-3 mt-5 max-w-xl text-lg leading-relaxed text-ink">
             A tiny house goes together around that wall. This is the rough-in order,
             the mistakes that rot a trailer, and a planner that sizes the tank, the
@@ -49,6 +53,31 @@ export function HomeView() {
         <div className="rise rise-3">
           <ServiceWallDiagram />
         </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-4">
+        <h2 className="font-display text-3xl text-ink">Read this first</h2>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {(
+            [
+              { to: "/start", label: "Start here", note: "Seven steps before you buy a thing." },
+              { to: "/before", label: "Before you build", note: "Zoning, codes, loans, and insurance." },
+              { to: "/trailer", label: "Trailer and towing", note: "Ratings, water weight, and the highway check." },
+              { to: "/egress", label: "Egress and fire", note: "A way out of the loft, alarms, and loads." },
+              { to: "/glossary", label: "Glossary", note: "Service wall, gray water, shore power, CO." },
+            ] as const
+          ).map((item) => (
+            <li key={item.to}>
+              <Link
+                to={item.to}
+                className="tap shadow-card flex min-h-24 flex-col justify-center rounded-card bg-card px-4 py-4"
+              >
+                <span className="font-medium text-ink">{item.label}</span>
+                <span className="mt-1 text-sm text-muted">{item.note}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-8">
@@ -166,6 +195,10 @@ export function HomeView() {
         <p className="max-w-2xl text-sm leading-relaxed text-muted">
           Structure, the trailer itself, and finishes sit outside this book. The systems
           fail in predictable ways. Those are the pages.
+        </p>
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink">
+          House kits and monthly tiny-house supply boxes will come later, after land and
+          suppliers are lined up. For now, use the checklists and the planner.
         </p>
       </section>
     </main>

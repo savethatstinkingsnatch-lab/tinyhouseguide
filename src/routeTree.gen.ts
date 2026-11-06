@@ -10,7 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BeforeRouteImport } from './routes/before'
+import { Route as EgressRouteImport } from './routes/egress'
+import { Route as GlossaryRouteImport } from './routes/glossary'
 import { Route as PlannerRouteImport } from './routes/planner'
+import { Route as StartRouteImport } from './routes/start'
+import { Route as TrailerRouteImport } from './routes/trailer'
 import { Route as SystemsSystemRouteImport } from './routes/systems.$system'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,9 +23,34 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BeforeRoute = BeforeRouteImport.update({
+  id: '/before',
+  path: '/before',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EgressRoute = EgressRouteImport.update({
+  id: '/egress',
+  path: '/egress',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GlossaryRoute = GlossaryRouteImport.update({
+  id: '/glossary',
+  path: '/glossary',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PlannerRoute = PlannerRouteImport.update({
   id: '/planner',
   path: '/planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StartRoute = StartRouteImport.update({
+  id: '/start',
+  path: '/start',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrailerRoute = TrailerRouteImport.update({
+  id: '/trailer',
+  path: '/trailer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SystemsSystemRoute = SystemsSystemRouteImport.update({
@@ -31,31 +61,76 @@ const SystemsSystemRoute = SystemsSystemRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/before': typeof BeforeRoute
+  '/egress': typeof EgressRoute
+  '/glossary': typeof GlossaryRoute
   '/planner': typeof PlannerRoute
+  '/start': typeof StartRoute
+  '/trailer': typeof TrailerRoute
   '/systems/$system': typeof SystemsSystemRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/before': typeof BeforeRoute
+  '/egress': typeof EgressRoute
+  '/glossary': typeof GlossaryRoute
   '/planner': typeof PlannerRoute
+  '/start': typeof StartRoute
+  '/trailer': typeof TrailerRoute
   '/systems/$system': typeof SystemsSystemRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/before': typeof BeforeRoute
+  '/egress': typeof EgressRoute
+  '/glossary': typeof GlossaryRoute
   '/planner': typeof PlannerRoute
+  '/start': typeof StartRoute
+  '/trailer': typeof TrailerRoute
   '/systems/$system': typeof SystemsSystemRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/planner' | '/systems/$system'
+  fullPaths:
+    | '/'
+    | '/before'
+    | '/egress'
+    | '/glossary'
+    | '/planner'
+    | '/start'
+    | '/trailer'
+    | '/systems/$system'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/planner' | '/systems/$system'
-  id: '__root__' | '/' | '/planner' | '/systems/$system'
+  to:
+    | '/'
+    | '/before'
+    | '/egress'
+    | '/glossary'
+    | '/planner'
+    | '/start'
+    | '/trailer'
+    | '/systems/$system'
+  id:
+    | '__root__'
+    | '/'
+    | '/before'
+    | '/egress'
+    | '/glossary'
+    | '/planner'
+    | '/start'
+    | '/trailer'
+    | '/systems/$system'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BeforeRoute: typeof BeforeRoute
+  EgressRoute: typeof EgressRoute
+  GlossaryRoute: typeof GlossaryRoute
   PlannerRoute: typeof PlannerRoute
+  StartRoute: typeof StartRoute
+  TrailerRoute: typeof TrailerRoute
   SystemsSystemRoute: typeof SystemsSystemRoute
 }
 
@@ -68,11 +143,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/before': {
+      id: '/before'
+      path: '/before'
+      fullPath: '/before'
+      preLoaderRoute: typeof BeforeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/egress': {
+      id: '/egress'
+      path: '/egress'
+      fullPath: '/egress'
+      preLoaderRoute: typeof EgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/glossary': {
+      id: '/glossary'
+      path: '/glossary'
+      fullPath: '/glossary'
+      preLoaderRoute: typeof GlossaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/planner': {
       id: '/planner'
       path: '/planner'
       fullPath: '/planner'
       preLoaderRoute: typeof PlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/start': {
+      id: '/start'
+      path: '/start'
+      fullPath: '/start'
+      preLoaderRoute: typeof StartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trailer': {
+      id: '/trailer'
+      path: '/trailer'
+      fullPath: '/trailer'
+      preLoaderRoute: typeof TrailerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/systems/$system': {
@@ -87,7 +197,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BeforeRoute: BeforeRoute,
+  EgressRoute: EgressRoute,
+  GlossaryRoute: GlossaryRoute,
   PlannerRoute: PlannerRoute,
+  StartRoute: StartRoute,
+  TrailerRoute: TrailerRoute,
   SystemsSystemRoute: SystemsSystemRoute,
 }
 export const routeTree = rootRouteImport

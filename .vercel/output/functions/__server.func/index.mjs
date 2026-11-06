@@ -12,7 +12,7 @@ var install_page_default = "<!DOCTYPE html>\n<html lang=\"en\" class=\"device-de
 //#endregion
 //#region \0virtual:grok-og-identity
 var grokOgIdentity = { "site": {
-	"title": "Service Wall",
+	"title": "Tiny Houses: Service Wall",
 	"card": "custom",
 	"image": "/og.jpg"
 } };

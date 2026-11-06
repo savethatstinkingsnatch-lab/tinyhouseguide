@@ -1,8 +1,8 @@
 import { i as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { s as ArrowRight } from "../_libs/lucide-react.mjs";
-import { i as cn, l as systemOrder, n as Route, r as useGuideStore, s as isSystemId, u as systems } from "./router-NB6mE9bN.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/systems._system-Cc5ymxRH.js
+import { c as ArrowRight } from "../_libs/lucide-react.mjs";
+import { i as cn, l as systemOrder, n as Route, r as useGuideStore, s as isSystemId, u as systems } from "./router-nHdU61Fg.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/systems._system-DZkpDWtS.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function SystemView({ systemId }) {

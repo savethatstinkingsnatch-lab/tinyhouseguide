@@ -1,7 +1,7 @@
 import { S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { a as Droplets, i as Flame, s as ArrowRight, t as Zap } from "../_libs/lucide-react.mjs";
-import { a as buildOrder, c as stepsFor, i as cn, l as systemOrder, o as collisions, r as useGuideStore, u as systems } from "./router-NB6mE9bN.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-XO6vbdhD.js
+import { a as Flame, c as ArrowRight, o as Droplets, t as Zap } from "../_libs/lucide-react.mjs";
+import { a as buildOrder, c as stepsFor, i as cn, l as systemOrder, o as collisions, r as useGuideStore, u as systems } from "./router-nHdU61Fg.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-BVjeypiv.js
 var import_jsx_runtime = require_jsx_runtime();
 var zones = [
 	{
@@ -118,6 +118,14 @@ function HomeView() {
 					children: "Put water, power, and heat on one wall."
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "rise rise-3 mt-4 max-w-xl font-display text-xl leading-snug text-ink",
+					children: "The Education Revolution Pocket Guide, Volume 24: Tiny Houses"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "rise rise-3 mt-1 text-sm text-muted",
+					children: "by Blue and the Awesome Dudes"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "rise rise-3 mt-5 max-w-xl text-lg leading-relaxed text-ink",
 					children: "A tiny house goes together around that wall. This is the rough-in order, the mistakes that rot a trailer, and a planner that sizes the tank, the cord, and the heater to your floor plan."
 				}),
@@ -140,6 +148,52 @@ function HomeView() {
 			] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "rise rise-3",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ServiceWallDiagram, {})
+			})]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+			className: "mx-auto max-w-6xl px-5 py-4",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				className: "font-display text-3xl text-ink",
+				children: "Read this first"
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+				className: "mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3",
+				children: [
+					{
+						to: "/start",
+						label: "Start here",
+						note: "Seven steps before you buy a thing."
+					},
+					{
+						to: "/before",
+						label: "Before you build",
+						note: "Zoning, codes, loans, and insurance."
+					},
+					{
+						to: "/trailer",
+						label: "Trailer and towing",
+						note: "Ratings, water weight, and the highway check."
+					},
+					{
+						to: "/egress",
+						label: "Egress and fire",
+						note: "A way out of the loft, alarms, and loads."
+					},
+					{
+						to: "/glossary",
+						label: "Glossary",
+						note: "Service wall, gray water, shore power, CO."
+					}
+				].map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+					to: item.to,
+					className: "tap shadow-card flex min-h-24 flex-col justify-center rounded-card bg-card px-4 py-4",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "font-medium text-ink",
+						children: item.label
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "mt-1 text-sm text-muted",
+						children: item.note
+					})]
+				}) }, item.to))
 			})]
 		}),
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
@@ -273,12 +327,15 @@ function HomeView() {
 				})
 			})]
 		}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 			className: "mx-auto max-w-6xl px-5 py-6",
-			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				className: "max-w-2xl text-sm leading-relaxed text-muted",
 				children: "Structure, the trailer itself, and finishes sit outside this book. The systems fail in predictable ways. Those are the pages."
-			})
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-4 max-w-2xl text-sm leading-relaxed text-ink",
+				children: "House kits and monthly tiny-house supply boxes will come later, after land and suppliers are lined up. For now, use the checklists and the planner."
+			})]
 		})
 	] });
 }
