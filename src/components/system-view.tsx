@@ -35,6 +35,9 @@ export function SystemView({ systemId }: { systemId: SystemId }) {
       <p className="text-sm font-semibold tracking-widest text-copper-ink uppercase">{guide.kicker}</p>
       <h1 className="mt-2 font-display text-4xl text-ink sm:text-5xl">{guide.name}</h1>
       <p className="mt-4 text-lg leading-relaxed text-ink">{guide.summary}</p>
+      <p className="mt-3 text-sm leading-relaxed text-ink">
+        These checks are not an engineered plan and not code approval.
+      </p>
       <p className="mt-3 text-sm tabular-nums text-muted">
         {complete} of {steps.length} field checks
       </p>

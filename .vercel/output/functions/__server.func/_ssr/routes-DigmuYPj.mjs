@@ -1,7 +1,7 @@
 import { S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as Flame, c as ArrowRight, o as Droplets, t as Zap } from "../_libs/lucide-react.mjs";
-import { a as buildOrder, c as stepsFor, i as cn, l as systemOrder, o as collisions, r as useGuideStore, u as systems } from "./router-nHdU61Fg.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-BVjeypiv.js
+import { a as buildOrder, c as stepsFor, i as cn, l as systemOrder, o as collisions, r as useGuideStore, u as systems } from "./router-C2HB2T4m.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-DigmuYPj.js
 var import_jsx_runtime = require_jsx_runtime();
 var zones = [
 	{
@@ -171,7 +171,7 @@ function HomeView() {
 					{
 						to: "/trailer",
 						label: "Trailer and towing",
-						note: "Ratings, water weight, and the highway check."
+						note: "Weigh the rig. Planner weight is not a tow rating."
 					},
 					{
 						to: "/egress",
@@ -281,18 +281,25 @@ function HomeView() {
 			className: "mx-auto max-w-6xl px-5 py-8",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex flex-wrap items-end justify-between gap-4",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-					className: "font-display text-3xl text-ink sm:text-4xl",
-					children: "Build order"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-					className: "mt-2 text-sm tabular-nums text-muted",
-					children: [
-						buildDone,
-						" of ",
-						buildOrder.length,
-						" marked"
-					]
-				})] }), anyDone ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+						className: "font-display text-3xl text-ink sm:text-4xl",
+						children: "Build order"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "mt-2 max-w-2xl text-sm leading-relaxed text-ink",
+						children: "A sequence to think through, not an engineered plan and not code approval."
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "mt-2 text-sm tabular-nums text-muted",
+						children: [
+							buildDone,
+							" of ",
+							buildOrder.length,
+							" marked"
+						]
+					})
+				] }), anyDone ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 					type: "button",
 					onClick: resetChecks,
 					className: "tap min-h-11 rounded-full px-3 text-sm font-medium text-copper-ink",

@@ -5,7 +5,7 @@ import { a as union, i as string, n as number, r as object, t as literal } from 
 import { t as clsx } from "../_libs/clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
 import { n as create, t as persist } from "../_libs/zustand.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/guide-data-CPpMlawG.js
+//#region node_modules/.nitro/vite/services/ssr/assets/guide-data-BiS5tOWw.js
 var systems = {
 	plumbing: {
 		id: "plumbing",
@@ -89,9 +89,9 @@ var systems = {
 					{
 						id: "p-test",
 						title: "Pressure-test before the insulation goes in",
-						body: "Cap the ends, pump the supply to about 60 psi, and leave it. An hour is a minimum. Overnight is better. The gauge should not move. Soapy water on every crimp. Fix it while the bay is still a bay.",
+						body: "Follow the pipe and fitting manufacturer’s instructions and the local code for the test pressure and how long to hold it. Isolate any component that is not rated for the test. Soapy water on every joint. Fix it while the bay is still a bay.",
 						why: "A drip inside a closed tiny-house wall becomes rot, and these walls are too thin to have a spare inch of it.",
-						watch: "Test past the water heater, not just up to its valves. The connections you skip are the ones that weep."
+						watch: "Do not copy a pressure or a hold time from another brand’s sheet. Test past the water heater only if that heater’s listing allows it. The connections you skip are the ones that weep."
 					},
 					{
 						id: "p-freeze",
@@ -148,7 +148,7 @@ var systems = {
 		summary: "A tiny house on a trailer is often reviewed like an RV. The same house on a foundation is a dwelling. Those are different rulebooks. Know which one you are in before you buy a panel.",
 		kit: [
 			"An inlet, not a tail of cord through a hole — 30 A or 50 A, matching the planner",
-			"Copper conductors: 14 AWG on 15 A, 12 AWG on 20 A, 10 AWG on a short 30 A feeder, 6 AWG on a typical 50 A feeder",
+			"Copper unless a listed lug says otherwise. Gauge, insulation type, and protection are the electrician’s design — this list does not pick them",
 			"A panel with spare spaces — 8 or 12, not a stuffed 6",
 			"GFCI protection for the kitchen, the bath, and anything outside",
 			"A listed lug bonding the ground bar to bare trailer metal",
@@ -199,9 +199,9 @@ var systems = {
 					},
 					{
 						id: "e-gauge",
-						title: "Let the breaker pick the wire, not the other way around",
-						body: "15 amps, 14 AWG copper. 20 amps, 12 AWG copper. A 30-amp inlet wants 10 AWG copper on a short run inside the house. A 50-amp feeder is typically 6 AWG copper. Use NM-B inside dry walls. In the belly, and anywhere the road can throw water or a rock, use UF or conductors in liquidtight conduit.",
-						why: "Undersized wire gets hot inside a wall you cannot see. Oversized wire on a small breaker is just a waste, not a safety upgrade — the breaker is the protection.",
+						title: "The wire is a design, not a recipe",
+						body: "Ampacity, the length of the run, the temperature around the cable, and whether it sits in a dry wall or under a trailer on the road all change what is allowed. NM-B, UF, and conductors in conduit are different methods for different conditions. None of them is a universal recipe for the belly or for a road-exposed bay. A qualified electrician designs the conductors and the protection. The inspector is who accepts them. This guide will not hand you a gauge.",
+						why: "Undersized wire gets hot inside a wall you cannot see. A bigger wire on a small breaker is not, by itself, a safety upgrade — the overcurrent device is the protection, and it has to match a listed design.",
 						watch: "Aluminum is a specialty, not a scrap-bin decision. If a lug is marked copper only, believe it. Mixing aluminum and copper without listed connectors is how terminals burn."
 					},
 					{
@@ -284,7 +284,7 @@ var systems = {
 			"A sealed-combustion heater, or a mini-split, sized in the planner — not a 30,000 BTU furnace",
 			"The vent or line-set path drawn before the siding goes on",
 			"A bath fan ducted outdoors, not into the loft",
-			"Smoke alarm and a CO alarm, plus a propane alarm if you carry propane",
+			"Smoke alarms on every level, inside bedrooms, and outside sleeping areas; CO alarms on every level and outside sleeping areas; a listed propane detector, mounted per its instructions, if you carry propane",
 			"Clearance notes from the heater’s own manual, copied onto a card at the unit"
 		],
 		phases: [
@@ -310,9 +310,9 @@ var systems = {
 					{
 						id: "h-size",
 						title: "Size it from the loss, not from the fear",
-						body: "Use the planner. A tight 8 by 20 in a mixed climate often lands near a 5,000 BTU heater. Cold country and a bigger box move you toward 8,000 or 12,000. Jumping to a big furnace because ‘it gets cold in January’ gives you a machine that never runs long enough to feel even.",
+						body: "The planner’s BTU figure is an educational sketch of heat loss, not a heater to buy. A climate button is not your town’s design temperature, and the insulation and leakage assumptions are not your finished house. DOE guidance is to calculate the actual heating and cooling loads, then select equipment from those loads. A rule of thumb, including this sketch, can push you toward the wrong machine.",
 						why: "Short cycles leave the floor cold, the air hot at the ceiling, and moisture in the corners.",
-						watch: "The planner assumes you actually built the shell it describes. A leaky belly can double the number. If your floor has daylight, do not trust the small heater yet."
+						watch: "A leaky belly makes the sketch even less useful. Fix the shell, then run a recognized load calculation before anyone orders equipment."
 					}
 				]
 			},
@@ -359,7 +359,7 @@ var systems = {
 					{
 						id: "h-alarms",
 						title: "Put alarms where they can wake you",
-						body: "A smoke alarm. A carbon monoxide alarm outside the sleeping area, and another if the heater is far from the loft. A propane alarm low in the room if you have propane — propane pools. Test them the day you move in, and put fresh dates on the planner card.",
+						body: "CPSC guidance is smoke alarms on every level, inside each bedroom, and outside each sleeping area, and carbon monoxide alarms on every level and outside each sleeping area. Test them monthly. If you carry propane, install a listed propane detector where that detector’s instructions say. Do not treat “low in the room” as a universal mounting height.",
 						why: "Combustion appliances in a small volume do not give you much time. The alarm is the system, not an accessory.",
 						watch: "A CO alarm in a drawer is a CO alarm you do not have. Follow the height in the instructions. Do not paint them."
 					},
@@ -489,7 +489,7 @@ function stepsFor(id) {
 	return systems[id].phases.flatMap((phase) => phase.steps);
 }
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-nHdU61Fg.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-C2HB2T4m.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -1023,7 +1023,7 @@ var Route$8 = createRootRoute({
 		] })]
 	})
 });
-var $$splitComponentImporter$7 = () => import("./routes-BVjeypiv.mjs");
+var $$splitComponentImporter$7 = () => import("./routes-DigmuYPj.mjs");
 var Route$7 = createFileRoute("/")({
 	component: lazyRouteComponent($$splitComponentImporter$7, "component"),
 	head: () => ({ meta: [{ title: "Tiny Houses: Service Wall — plumbing, power, and heat" }] })
@@ -1033,7 +1033,7 @@ var Route$6 = createFileRoute("/before")({
 	component: lazyRouteComponent($$splitComponentImporter$6, "component"),
 	head: () => ({ meta: [{ title: "Before you build — Tiny Houses: Service Wall" }] })
 });
-var $$splitComponentImporter$5 = () => import("./egress-CJC2qSbS.mjs");
+var $$splitComponentImporter$5 = () => import("./egress-53QTuCs_.mjs");
 var Route$5 = createFileRoute("/egress")({
 	component: lazyRouteComponent($$splitComponentImporter$5, "component"),
 	head: () => ({ meta: [{ title: "Egress and fire — Tiny Houses: Service Wall" }] })
@@ -1043,7 +1043,7 @@ var Route$4 = createFileRoute("/glossary")({
 	component: lazyRouteComponent($$splitComponentImporter$4, "component"),
 	head: () => ({ meta: [{ title: "Glossary — Tiny Houses: Service Wall" }] })
 });
-var $$splitComponentImporter$3 = () => import("./planner-CS9diDi8.mjs");
+var $$splitComponentImporter$3 = () => import("./planner-E9dkg1Vn.mjs");
 var Route$3 = createFileRoute("/planner")({
 	component: lazyRouteComponent($$splitComponentImporter$3, "component"),
 	head: () => ({ meta: [{ title: "Size the systems — Tiny Houses: Service Wall" }] })
@@ -1053,12 +1053,12 @@ var Route$2 = createFileRoute("/start")({
 	component: lazyRouteComponent($$splitComponentImporter$2, "component"),
 	head: () => ({ meta: [{ title: "Start here — Tiny Houses: Service Wall" }] })
 });
-var $$splitComponentImporter$1 = () => import("./trailer-XkpcidUq.mjs");
+var $$splitComponentImporter$1 = () => import("./trailer-BCpMum3u.mjs");
 var Route$1 = createFileRoute("/trailer")({
 	component: lazyRouteComponent($$splitComponentImporter$1, "component"),
 	head: () => ({ meta: [{ title: "Trailer, weight, and towing — Tiny Houses: Service Wall" }] })
 });
-var $$splitComponentImporter = () => import("./systems._system-DZkpDWtS.mjs");
+var $$splitComponentImporter = () => import("./systems._system-BSYTuRL7.mjs");
 var Route = createFileRoute("/systems/$system")({
 	component: lazyRouteComponent($$splitComponentImporter, "component"),
 	head: ({ params }) => ({ meta: [{ title: isSystemId(params.system) ? `${systems[params.system].name} — Tiny Houses: Service Wall` : "Tiny Houses: Service Wall" }] })

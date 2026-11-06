@@ -62,7 +62,7 @@ export function HomeView() {
             [
               { to: "/start", label: "Start here", note: "Seven steps before you buy a thing." },
               { to: "/before", label: "Before you build", note: "Zoning, codes, loans, and insurance." },
-              { to: "/trailer", label: "Trailer and towing", note: "Ratings, water weight, and the highway check." },
+              { to: "/trailer", label: "Trailer and towing", note: "Weigh the rig. Planner weight is not a tow rating." },
               { to: "/egress", label: "Egress and fire", note: "A way out of the loft, alarms, and loads." },
               { to: "/glossary", label: "Glossary", note: "Service wall, gray water, shore power, CO." },
             ] as const
@@ -146,6 +146,9 @@ export function HomeView() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 className="font-display text-3xl text-ink sm:text-4xl">Build order</h2>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink">
+              A sequence to think through, not an engineered plan and not code approval.
+            </p>
             <p className="mt-2 text-sm tabular-nums text-muted">
               {buildDone} of {buildOrder.length} marked
             </p>

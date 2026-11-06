@@ -5,20 +5,26 @@ const DELTA = { mild: 30, mixed: 45, cold: 60, severe: 75 } as const;
 const SUN = { mild: 4.5, mixed: 4, cold: 3, severe: 2.5 } as const;
 const TANK_SIZES = [20, 30, 40, 55, 80, 100, 150];
 const BLACK_SIZES = [15, 20, 30, 40];
-const HEATER_SIZES = [5000, 8000, 12000, 18000, 24000];
 
 export type PlanNote = { level: "note" | "stop"; text: string };
+
+export type TankSketch = {
+  demandGal: number;
+  listedGal: number | null;
+  over: boolean;
+  label: string;
+};
 
 export type PlanResult = {
   area: number;
   btu: number;
-  heaterSize: number;
   delta: number;
-  freshGal: number;
-  freshLabel: string;
-  greyLabel: string;
-  blackLabel: string;
+  fresh: TankSketch;
+  grey: TankSketch;
+  black: TankSketch;
+  tanksOver: boolean;
   waterWeightLb: number;
+  weightNote: string;
   hotWater: string;
   panel: string;
   spaces: string;
@@ -34,8 +40,29 @@ export type PlanResult = {
   assumptions: string;
 };
 
-function roundUp(value: number, sizes: number[]): number {
-  return sizes.find((size) => size >= value) ?? sizes[sizes.length - 1] ?? value;
+function coveringSize(demand: number, sizes: number[]): { listed: number | null; over: boolean } {
+  const listed = sizes.find((size) => size >= demand);
+  return listed == null ? { listed: null, over: true } : { listed, over: false };
+}
+
+function tankSketch(name: string, demand: number, sizes: number[]): TankSketch {
+  const rounded = Math.max(0, Math.round(demand));
+  const max = sizes[sizes.length - 1] ?? 0;
+  const { listed, over } = coveringSize(rounded, sizes);
+  if (over) {
+    return {
+      demandGal: rounded,
+      listedGal: null,
+      over: true,
+      label: `Calculated demand is about ${rounded.toLocaleString()} gal. The largest ${name} size in this sketch is ${max} gal, and it does not cover that demand. Do not treat ${max} gal, or the weight of a ${max} gal tank, as the design.`,
+    };
+  }
+  return {
+    demandGal: rounded,
+    listedGal: listed,
+    over: false,
+    label: `Calculated demand is about ${rounded.toLocaleString()} gal. A listed size in this sketch that covers it: ${listed} gal. The list is an illustration, not a catalog and not a specification.`,
+  };
 }
 
 export function planHouse(input: PlanInput): PlanResult {
@@ -54,54 +81,75 @@ export function planHouse(input: PlanInput): PlanResult {
     volume * 0.5 * 0.018;
   const delta = DELTA[input.climate];
   const btu = Math.round(ua * delta * 1.35);
-  const heaterSize = roundUp(btu, HEATER_SIZES);
 
   const dailyGal = GPD[input.use] * input.people;
   const wantedFresh = dailyGal * input.days;
-  const freshGal =
-    input.water === "hookup" ? 20 : roundUp(wantedFresh, TANK_SIZES);
-  const freshOver = input.water === "tanks" && wantedFresh > 150;
-  const freshLabel =
+  const fresh =
     input.water === "hookup"
-      ? "20 gal buffer on a regulated hose bibb"
-      : freshOver
-        ? "150 gal is the sketch cap — refill sooner"
-        : `${freshGal} gal fresh`;
+      ? {
+          demandGal: 20,
+          listedGal: 20,
+          over: false,
+          label:
+            "A 20 gal buffer on a regulated hose is an illustration, not a required tank. You still need a legal place for the drain water.",
+        }
+      : tankSketch("fresh", wantedFresh, TANK_SIZES);
 
   const greyNeed =
+    input.water === "hookup" ? 0 : dailyGal * input.days * (input.toilet === "black" ? 0.7 : 0.9);
+  const grey =
     input.water === "hookup"
-      ? 0
-      : dailyGal * input.days * (input.toilet === "black" ? 0.7 : 0.9);
-  const greyLabel =
-    input.water === "hookup"
-      ? "Dump to a sewer. Carry grey only if you also boondock."
-      : `${roundUp(greyNeed, TANK_SIZES)} gal grey`;
+      ? {
+          demandGal: 0,
+          listedGal: null,
+          over: false,
+          label: "Hooked up, grey water goes to a legal sewer or septic, not into a tank this sketch sizes.",
+        }
+      : tankSketch("grey", greyNeed, TANK_SIZES);
 
-  const blackLabel =
+  const blackNeed = input.people * 2 * input.days;
+  const black: TankSketch =
     input.toilet === "compost"
-      ? "No black tank. Empty solids every couple of weeks, liquids much sooner."
+      ? {
+          demandGal: 0,
+          listedGal: null,
+          over: false,
+          label:
+            "No black tank with a composting toilet. Solids and liquids still have emptying rules. Ask the health department.",
+        }
       : input.toilet === "cassette"
-        ? "A 5 gal cassette. Plan a dump every few days for two people."
-        : `${roundUp(input.people * 2 * input.days, BLACK_SIZES)} gal black tank`;
+        ? {
+            demandGal: 0,
+            listedGal: null,
+            over: false,
+            label:
+              "A cassette is a small holding tank you carry to a dump station, often around 5 gal. This sketch does not size it. Empty it before it is full.",
+          }
+        : tankSketch("black", blackNeed, BLACK_SIZES);
 
-  const greyGal = input.water === "hookup" ? 0 : roundUp(greyNeed, TANK_SIZES);
-  const blackGal =
-    input.toilet === "black" ? roundUp(input.people * 2 * input.days, BLACK_SIZES) : 0;
-  const waterWeightLb = Math.round((freshGal + greyGal + blackGal) * 8.3);
+  const tanksOver = fresh.over || grey.over || black.over;
+  const weightGallons =
+    (fresh.over ? fresh.demandGal : (fresh.listedGal ?? 0)) +
+    (grey.over ? grey.demandGal : (grey.listedGal ?? 0)) +
+    (black.over ? black.demandGal : (black.listedGal ?? 0));
+  const waterWeightLb = Math.round(weightGallons * 8.3);
+  const weightNote = tanksOver
+    ? "This weight uses the calculated gallons wherever a tank is past the sketch’s list, so a capped preset is not pretending to be the design. It is still only water. It is not a loaded trailer weight, an axle load, a tongue weight, or a tow rating."
+    : "Weight if those listed tanks were full, at about 8.3 lb a gallon. You will rarely have fresh and grey full together. This is not a loaded trailer weight and not a towing-capacity assessment.";
 
   let hotWater =
-    "Direct-vent propane tankless, matched to the showerhead. Skip electric tankless.";
+    "Direct-vent propane tankless is a common match for a tiny house. Match it to the showerhead using that heater’s manual. Skip a whole-house electric tankless unless the nameplate fits the service you actually have.";
   if (input.power === "shore50" && input.heat !== "propane" && input.heat !== "diesel") {
     hotWater =
-      "A 6 gal electric tank on its own 15 A circuit is reasonable. Propane tankless still wins if you already haul propane.";
+      "A small electric storage tank can work on a 50 A service if its nameplate fits beside the other loads. Do not assume a 15 A / 14 AWG circuit. Propane tankless is still the usual choice if you already haul propane.";
   }
   if (input.power === "shore30" && input.heat === "electric") {
     hotWater =
-      "Prefer propane tankless. A 6 gal electric tank only works if it never runs beside the heater and the microwave.";
+      "A 30 A cord is a small budget. Prefer a propane tankless. An electric tank only belongs if its nameplate, plus the heater and the cooktop, still fit. Do not assume a generic 15 A circuit.";
   }
   if (input.power === "offgrid") {
     hotWater =
-      "Propane tankless. Electric water heat will dominate a small battery before lunch.";
+      "Propane tankless. Electric water heat will dominate a small battery before lunch. This is not an off-grid electrical design.";
   }
 
   const panel =
@@ -112,10 +160,22 @@ export function planHouse(input: PlanInput): PlanResult {
         : "Inverter-fed subpanel if you want 120 V outlets. Bond it the way the inverter manual says, not the way a house meter is bonded.";
 
   const circuits: { name: string; spec: string }[] = [
-    { name: "Lights", spec: "15 A · 14 AWG copper" },
-    { name: "Receptacles", spec: "20 A · 12 AWG copper" },
-    { name: "Kitchen", spec: "20 A GFCI · 12 AWG" },
-    { name: "Bath", spec: "20 A GFCI · 12 AWG" },
+    {
+      name: "Lights",
+      spec: "Its own circuit. The breaker and the wire come from the adopted code and a qualified electrician, not from a generic 15 A line.",
+    },
+    {
+      name: "Receptacles",
+      spec: "A general circuit, separate from the kitchen and the bath. Gauge is a design, not a guess.",
+    },
+    {
+      name: "Kitchen",
+      spec: "Leave room for GFCI where wet-room rules require it. Size the circuit from the appliance nameplates.",
+    },
+    {
+      name: "Bath",
+      spec: "Leave room for GFCI. Read the fan nameplate, and any heater nameplate, before anyone picks a breaker.",
+    },
   ];
   if (input.water === "tanks") {
     circuits.push({
@@ -126,26 +186,29 @@ export function planHouse(input: PlanInput): PlanResult {
   if (input.heat === "minisplit") {
     circuits.push({
       name: "Mini-split",
-      spec: "Dedicated 15–20 A. Read the nameplate — many small units are 120 V.",
+      spec: "A dedicated circuit. Read the minimum circuit ampacity on the nameplate before anyone picks a breaker.",
     });
   } else if (input.heat === "electric") {
     circuits.push({
       name: "Resistance heat",
-      spec: "15 A for a single 1,500 W heater. That is half of a 30 A cord.",
+      spec: "A 1,500 W heater is about 12.5 A, already half of a 30 A cord. The breaker and the wire still come from that unit’s nameplate, not from this sentence.",
     });
   } else {
     circuits.push({
       name: "Heater controls",
-      spec: "15 A for the fan, or a fused 12 V pair if the unit is DC",
+      spec: "A small circuit for the fan, or a fused 12 V pair if the unit is DC. Take the amps from the manual.",
     });
   }
   if (input.power === "shore50" && input.heat !== "propane" && input.heat !== "diesel" && input.heat !== "wood") {
-    circuits.push({ name: "Water heater", spec: "15 A · 14 AWG, 6 gal tank" });
+    circuits.push({
+      name: "Water heater",
+      spec: "Only if the nameplate fits the service. Do not assume a 15 A / 14 AWG circuit is enough for a small tank.",
+    });
   }
   if (input.water === "tanks" && (input.climate === "cold" || input.climate === "severe")) {
     circuits.push({
       name: "Heat cable",
-      spec: "GFCI 15 A, self-regulating cable, thermostat — not constant-wattage in foam",
+      spec: "GFCI protection for self-regulating cable, on a thermostat — not constant-wattage buried in foam. The breaker comes from the cable’s listing.",
     });
   }
 
@@ -170,7 +233,10 @@ export function planHouse(input: PlanInput): PlanResult {
       dailyKwh: Math.round(dailyKwh * 10) / 10,
       arrayW,
       batteryAh,
-      inverter: input.heat === "minisplit" || input.heat === "electric" ? "3,000 W pure sine" : "2,000 W pure sine",
+      inverter:
+        input.heat === "minisplit" || input.heat === "electric"
+          ? "Example only: a 3,000 W pure-sine inverter, not a specified one"
+          : "Example only: a 2,000 W pure-sine inverter, not a specified one",
       sun,
     };
   }
@@ -212,10 +278,16 @@ export function planHouse(input: PlanInput): PlanResult {
       text: "Sleeping space gets sealed combustion only. Unvented cabinet heaters are for when you are awake. A CO alarm is part of the heater, not a nicety.",
     });
   }
-  if (freshGal >= 80 || waterWeightLb >= 800) {
+  if ((fresh.listedGal != null && fresh.listedGal >= 80) || waterWeightLb >= 800) {
     notes.push({
       level: "note",
-      text: `Full tanks are about ${waterWeightLb.toLocaleString()} lb. You will rarely have fresh and grey full together, but the trailer and the axles still have to be told the truth.`,
+      text: `Water in this sketch is about ${waterWeightLb.toLocaleString()} lb. ${weightNote}`,
+    });
+  }
+  if (tanksOver) {
+    notes.push({
+      level: "stop",
+      text: "At least one tank is past the sizes this sketch lists. The calculated demand is the number that matters. A capped preset is not a recommendation, and its weight is not the design weight.",
     });
   }
   if (input.toilet === "compost" && (input.climate === "cold" || input.climate === "severe")) {
@@ -230,25 +302,18 @@ export function planHouse(input: PlanInput): PlanResult {
       text: "Cold climates want the tanks inside the belly insulation, or self-regulating heat cable on a GFCI. Decide that before the belly pan is riveted on.",
     });
   }
-  if (freshOver) {
-    notes.push({
-      level: "note",
-      text: "That water budget is a delivery truck. Carry fewer days or shower like you mean it. Tiny-house tanks top out well before the math does.",
-    });
-  }
-
-  const assumptions = `${area} sq ft, effective R-11 walls after bridging, R-20 belly, R-30 roof, windows near 15% of the floor, half an air change an hour, a ${delta}°F design gap, then a 1.35 factor because trailers are draftier than textbooks. A belly you can see daylight through can still beat this number.`;
+  const assumptions = `${area} sq ft. The sketch assumes about R-11 walls after bridging, R-20 in the belly, R-30 in the roof, windows near 15% of the floor, about half an air change an hour, a ${delta}°F gap, then a 1.35 factor. Choosing a climate here does not set the design temperature for your town, and these assumptions are not a measurement of the finished house. This is not a Manual J or any other recognized load calculation. Do not buy a heater from it.`;
 
   return {
     area,
     btu,
-    heaterSize,
     delta,
-    freshGal,
-    freshLabel,
-    greyLabel,
-    blackLabel,
+    fresh,
+    grey,
+    black,
+    tanksOver,
     waterWeightLb,
+    weightNote,
     hotWater,
     panel,
     spaces,

@@ -154,19 +154,24 @@ export function PlannerView() {
       <section>
         <p className="text-sm font-semibold tracking-widest text-copper-ink uppercase">Planner</p>
         <h1 className="mt-2 font-display text-4xl text-ink sm:text-5xl">Size the house you are actually building.</h1>
-        <p className="mt-4 text-base leading-relaxed text-muted">
-          A sketch, not a stamp. It turns floor area, climate, and how you camp into a
-          tank, a cord, and a heater you can argue with.
+        <p className="mt-4 text-base leading-relaxed text-ink">
+          Not an engineered plan and not code approval. The figures are a teaching sketch.
+          When a tank is past the sizes this page lists, it says so. It will not hand you a
+          heater to buy.
+        </p>
+        <p className="mt-3 text-base leading-relaxed text-muted">
+          It turns floor area, how you camp, and a climate button into questions you can
+          take to an inspector, an electrician, and a real load calculation.
         </p>
         <div className="mt-6 grid grid-cols-3 gap-2 lg:hidden">
           <div className="rounded-2xl bg-ink p-3 text-paper">
-            <p className="text-xs tracking-widest text-paper/70 uppercase">Heat</p>
-            <p className="mt-1 font-display text-xl tabular-nums">{result.heaterSize.toLocaleString()}</p>
+            <p className="text-xs tracking-widest text-paper/70 uppercase">Loss sketch</p>
+            <p className="mt-1 font-display text-xl tabular-nums">{result.btu.toLocaleString()}</p>
           </div>
           <div className="rounded-2xl bg-card p-3 shadow-card">
             <p className="text-xs tracking-widest text-muted uppercase">Fresh</p>
             <p className="mt-1 font-display text-xl tabular-nums">
-              {result.freshGal}
+              {result.fresh.demandGal}
               <span className="text-sm text-muted"> gal</span>
             </p>
           </div>
@@ -254,17 +259,17 @@ export function PlannerView() {
 
         <div className="mt-4">
           <Stat
-            label="Heater"
-            value={`${result.heaterSize.toLocaleString()} BTU/h`}
-            detail={`Loss sketch is about ${result.btu.toLocaleString()} BTU/h. Buy the next common size, not a furnace meant for a bungalow.`}
+            label="Heat-loss sketch"
+            value={`${result.btu.toLocaleString()} BTU/h`}
+            detail="An educational sketch only. Do not buy a heater from it. The climate button is not your town’s design temperature, and the insulation and leakage assumptions are not your finished house. A recognized load calculation, then the equipment that matches that load, is the step this page cannot take."
           />
-          <Stat label="Fresh water" value={result.freshLabel} />
-          <Stat label="Grey" value={result.greyLabel} />
-          <Stat label="Toilet" value={result.blackLabel} />
+          <Stat label="Fresh water" value={result.fresh.label} />
+          <Stat label="Grey" value={result.grey.label} />
+          <Stat label="Toilet" value={result.black.label} />
           <Stat
-            label="Water weight, full"
+            label={result.tanksOver ? "Calculated water weight" : "Listed-tank water weight"}
             value={`${result.waterWeightLb.toLocaleString()} lb`}
-            detail="8.3 pounds a gallon. Fresh, grey, and black if you have them."
+            detail={result.weightNote}
           />
           <Stat label="Hot water" value={result.hotWater} />
           <Stat label="Power" value={result.panel} detail={result.spaces} />
@@ -300,7 +305,7 @@ export function PlannerView() {
 
         {result.solar ? (
           <div className="mt-6 rounded-card bg-card p-5 shadow-card">
-            <h2 className="font-display text-2xl text-ink">Off-grid sketch</h2>
+            <h2 className="font-display text-2xl text-ink">Off-grid example, not a design</h2>
             <dl className="mt-4 grid grid-cols-3 gap-3">
               <div>
                 <dt className="text-xs tracking-widest text-muted uppercase">Daily</dt>
@@ -317,14 +322,15 @@ export function PlannerView() {
             </dl>
             <p className="mt-3 text-sm leading-relaxed text-muted">
               {result.solar.inverter}, lithium at 12 V, two days of storage, about {result.solar.sun} sun
-              hours. Includes a 12 V fridge. It does not include a workshop, an induction cooktop,
-              or a week of clouds.
+              hours. These are fixed classroom assumptions, including a 12 V fridge. They are not
+              an off-grid system design. They leave out a workshop, an induction cooktop, shading,
+              and a week of clouds.
             </p>
           </div>
         ) : null}
 
         <details className="mt-6 text-sm leading-relaxed text-muted">
-          <summary className="font-medium text-copper-ink">How the BTU number is figured</summary>
+          <summary className="font-medium text-copper-ink">How the heat-loss sketch is figured</summary>
           <p className="mt-2">{result.assumptions}</p>
         </details>
       </section>
