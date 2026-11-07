@@ -4,7 +4,7 @@ import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { Shell } from "@/components/shell";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "Tiny Houses: Service Wall";
+const APP_NAME = "Volume 24: Tiny Houses (The Education Revolution)";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -15,7 +15,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "A field guide to tiny-house plumbing, electricity, and heat — the service wall, the rough-in order, and a planner for tanks, breakers, and BTUs.",
+          "Volume 24 of The Education Revolution, by Blue and the Awesome Dudes. A field guide to tiny-house plumbing, electricity, and heat — the service wall, the rough-in order, and a planner for tanks, breakers, and BTUs.",
       },
       { name: "theme-color", content: "#f3efe6" },
     ],
